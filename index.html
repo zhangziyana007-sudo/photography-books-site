@@ -55,7 +55,6 @@ section.cat p{margin:0 auto 16px;max-width:640px;color:var(--muted);font-size:12
 .name{font-size:14px;font-weight:700;line-height:1.5;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3em}
 .meta{display:flex;flex-wrap:wrap;gap:5px;font-size:11px;color:var(--muted)}
 .tag{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:1px 8px}
-.tag.pw{border-color:var(--accent-line);background:var(--accent-tint);color:var(--accent-strong);font-family:Consolas,monospace}
 .acts{display:flex;margin-top:auto}
 .btn{flex:1;text-align:center;padding:9px 4px;border-radius:13px;font-size:13px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer;transition:filter .18s,box-shadow .18s}
 @media(hover:hover){.btn:hover{filter:brightness(1.06);box-shadow:0 6px 16px rgba(255,138,31,.32)}}
@@ -145,7 +144,7 @@ function card(r){
     ? `<a class="cov"${open}>${badge}<img src="covers/${esc(r.k)}" loading="lazy" decoding="async" alt="${esc(r.t)}">${mul}</a>`
     : `<a class="cov ph"${open}>${badge}<b>${esc(r.c)}</b><span>${esc(r.t.slice(0,14))}</span>${mul}</a>`;
   return `<article class="card">${cov}<div class="name">${esc(r.t)}</div>
-  <div class="meta"><span class="tag">${esc(r.f||'PDF')}</span><span class="tag">${r.mb} MB</span><span class="tag">${esc(r.c)}</span>${r.p?`<span class="tag pw">${esc(r.p)}</span>`:''}${r.v?`<span class="tag">${esc(r.v)}</span>`:''}</div>
+  <div class="meta"><span class="tag">${esc(r.f||'PDF')}</span><span class="tag">${r.mb} MB</span><span class="tag">${esc(r.c)}</span>${r.v?`<span class="tag">${esc(r.v)}</span>`:''}</div>
   <div class="acts">${btn}</div></article>`;
 }
 function render(){
