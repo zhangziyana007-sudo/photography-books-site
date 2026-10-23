@@ -174,42 +174,91 @@ text-align:center;font-size:12px;color:var(--appmiu-muted)}
 .appmiu-foot p{margin:0 0 6px;max-width:70ch}
 .appmiu-foot code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--appmiu-ink)}
 
-/* ---------- responsive ---------- */
+/* ---------- 手机端：吸顶入口 + 底部弹层 ---------- */
+.appmiu-bar-btns{display:none}
+.appmiu-sheet{display:none}
+.appmiu-sheet h4{font-size:12px;color:var(--appmiu-muted);margin:18px 0 8px;font-weight:400;letter-spacing:.04em}
+.appmiu-sheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.appmiu-sheet-grid button{display:flex;align-items:center;justify-content:space-between;gap:6px;
+min-height:46px;padding:0 12px;border:1px solid var(--appmiu-line);border-radius:10px;
+background:var(--appmiu-surface);color:var(--appmiu-ink);font-size:14px;cursor:pointer;text-align:left}
+.appmiu-sheet-grid button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.appmiu-sheet-grid button b{font-size:11px;font-weight:400;opacity:.6;flex:none}
+.appmiu-sheet-grid button[aria-pressed="true"]{background:var(--appmiu-pressed);color:#fff;border-color:var(--appmiu-pressed)}
+html.appmiu-dark .appmiu-sheet-grid button[aria-pressed="true"]{color:#101522}
+.appmiu-sheet-acts{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;margin-top:18px}
+.appmiu-sheet-acts .appmiu-filter-reset{min-height:46px;font-size:13px}
+.appmiu-sheet-done{min-height:46px;border:0;border-radius:10px;background:var(--appmiu-accent);color:#fff;
+font-size:14px;font-weight:700;cursor:pointer}
+.appmiu-panel-scrim{display:none}
+body.panel-open .appmiu-panel-scrim{display:block;position:fixed;inset:0;z-index:25;background:rgba(10,16,26,.42)}
 @media(max-width:1180px){
 .appmiu-discovery__layout{grid-template-columns:220px minmax(0,1fr)}
 .appmiu-discover-more{display:none}
 }
 @media(max-width:860px){
-.appmiu-discovery{width:calc(100% - 32px)}
-.appmiu-discovery__layout{grid-template-columns:1fr}
-.appmiu-filter-panel{position:static}
-.appmiu-filter{grid-template-columns:1fr 1fr}
-.appmiu-hero-topics{margin-top:30px}
-.appmiu-filter-chips{flex-wrap:nowrap;overflow:auto;justify-content:flex-start;padding-bottom:4px;
-scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.appmiu-filter-chips::-webkit-scrollbar{display:none}
-.appmiu-filter-chips button{flex:none}
-.appmiu-search-terms{width:calc(100% - 32px);margin-top:46px}
+.appmiu-hero{padding:38px 18px 104px}
+.appmiu-hero h1{font-size:clamp(26px,7vw,34px)}
+.appmiu-hero__inner{max-width:520px}
+.appmiu-hero-topics{display:none}                 /* 横滑 chips 在手机上够不到，分类改由底部弹层选 */
+.appmiu-discovery{width:calc(100% - 24px);margin-top:14px;padding:14px 0 26px}
+.appmiu-discovery__layout{grid-template-columns:1fr;gap:12px}
+.appmiu-search-terms{width:calc(100% - 24px);margin-top:40px}
+.appmiu-results{order:2}
+.appmiu-results-summary{position:sticky;top:0;z-index:6;gap:8px;flex-wrap:wrap;border-radius:12px}
+.appmiu-results-summary strong{flex:1 1 100%;order:-1;font-size:13px}
+.appmiu-view-controls{display:none}
+.appmiu-bar-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.appmiu-bar-btn{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:46px;
+padding:0 12px;border:1px solid var(--appmiu-line);border-radius:10px;background:var(--appmiu-surface);
+color:var(--appmiu-ink);font-size:14px;cursor:pointer}
+.appmiu-bar-btn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.appmiu-bar-btn i{font-style:normal;font-size:11px;opacity:.6;flex:none}
+.appmiu-bar-btn.hot[aria-pressed="true"],.appmiu-bar-btn.on{background:var(--appmiu-pressed);color:#fff;border-color:var(--appmiu-pressed)}
+.appmiu-filter-panel{position:static;display:none}
+body.panel-open .appmiu-filter-panel{display:flex;flex-direction:column;height:78vh;overflow:hidden;
+position:fixed;top:auto;left:10px;right:10px;bottom:0;z-index:30;
+padding:14px 14px calc(12px + env(safe-area-inset-bottom));
+border-radius:18px 18px 0 0;background:var(--appmiu-surface);border:1px solid var(--appmiu-line);
+box-shadow:0 -10px 44px rgba(10,16,26,.24)}
+body.panel-open .appmiu-filter-panel__head{flex:none}
+body.panel-open .appmiu-sheet{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch}
+body.panel-open .appmiu-sheet-acts{position:sticky;bottom:0;background:var(--appmiu-surface);
+padding-top:12px;box-shadow:0 -10px 18px rgba(10,16,26,.07)}
+body.panel-open{overflow:hidden}
+.appmiu-filter-panel__head{padding-bottom:12px;border-bottom:1px solid var(--appmiu-line);position:relative}
+.appmiu-filter-panel__head::before{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+width:38px;height:4px;border-radius:4px;background:var(--appmiu-line)}
+.appmiu-filter,#reset{display:none}
+.appmiu-sheet{display:block}
 .appmiu-list-view{gap:10px}
 }
 @media(max-width:560px){
-.appmiu-hero{padding:36px 16px 92px}
-.appmiu-hero__sub{font-size:13.5px}
+.appmiu-hero{padding:30px 14px 96px}
+.appmiu-eyebrow{letter-spacing:.24em;font-size:11px}
+.appmiu-hero__sub{font-size:13px;margin-top:10px}
 .appmiu-hero-search{width:calc(100% - 24px);bottom:-18px;border-radius:14px;padding-left:14px;gap:8px}
-.appmiu-hero-search input{height:44px;font-size:16px}
-.appmiu-hero-search button{min-width:46px;padding:0 12px;height:40px}
-.appmiu-filter{grid-template-columns:1fr}
-.appmiu-filter-panel,.appmiu-results-summary{border-radius:12px}
-.appmiu-results-summary{flex-direction:column;align-items:stretch;gap:8px}
-.appmiu-view-controls button{flex:1;min-height:42px}
-.appmiu-card{grid-template-columns:100px minmax(0,1fr);border-radius:12px;padding:10px}
-.appmiu-card h3{font-size:15px;margin-bottom:5px}
-.appmiu-card__body{padding-left:12px}
-.appmiu-card__body>p{font-size:12px;-webkit-line-clamp:1;margin-bottom:8px}
-.appmiu-btn{padding:9px 14px;min-height:42px}
+.appmiu-hero-search svg{width:16px;height:16px}
+.appmiu-hero-search input{height:46px;font-size:16px}              /* 16px：防止 iOS 聚焦时自动放大整页 */
+.appmiu-hero-search button{min-width:46px;padding:0 10px;height:44px}
+.appmiu-search-terms button{min-height:42px;padding:8px 14px;font-size:13.5px}
+.appmiu-card{grid-template-columns:84px minmax(0,1fr);border-radius:12px;padding:9px;gap:0}
+.appmiu-card h3{font-size:14.5px;margin-bottom:4px;line-height:1.4}
+.appmiu-card__body{padding-left:11px}
+.appmiu-card__body>p{font-size:12px;-webkit-line-clamp:1;margin-bottom:7px}
+.appmiu-card__meta{gap:5px}
+.appmiu-card__meta .tag-fmt,.appmiu-card__meta .tag-ver,.appmiu-card__meta .tag-no{display:none}
+.appmiu-card__media .t{display:none}                               /* 小封面塞不下长标题，靠缩略图/色块本身 */
+.appmiu-card__media .g{bottom:5px;left:5px;font-size:10px;padding:2px 6px}
+.appmiu-card__footer{margin-top:8px}
+.appmiu-list-view .appmiu-btn,.appmiu-two-column-view .appmiu-btn{width:100%;margin-left:0;text-align:center;
+min-height:46px;padding:12px 14px}
 .appmiu-grid-view{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.appmiu-grid-view .appmiu-card{padding:12px}
+.appmiu-grid-view .appmiu-card__body{padding:10px 0 0}
+.appmiu-grid-view .appmiu-card__media .t{display:grid}
 .appmiu-two-column-view{grid-template-columns:1fr}
-.appmiu-foot{padding:20px 16px calc(40px + env(safe-area-inset-bottom));font-size:11.5px}
+.appmiu-foot{padding:20px 14px calc(40px + env(safe-area-inset-bottom));font-size:11.5px}
 }
 </style>
 </head>
@@ -235,7 +284,7 @@ scrollbar-width:none;-webkit-overflow-scrolling:touch}
   <main class="appmiu-discovery">
     <div class="appmiu-discovery__layout">
 
-      <aside class="appmiu-filter-panel">
+      <aside class="appmiu-filter-panel" id="panel">
         <div class="appmiu-filter-panel__head">
           <h3>筛选</h3>
           <span id="active-cat">全部分类</span>
@@ -252,11 +301,28 @@ scrollbar-width:none;-webkit-overflow-scrolling:touch}
           </select></label>
         </div>
         <button type="button" class="appmiu-filter-reset" id="reset">清空筛选条件</button>
+
+        <div class="appmiu-sheet" id="sheet">
+          <h4>分类方向</h4><div class="appmiu-sheet-grid" id="s-cat"></div>
+          <h4>文件格式</h4><div class="appmiu-sheet-grid" id="s-fmt"></div>
+          <h4>册数</h4><div class="appmiu-sheet-grid" id="s-pack"></div>
+          <h4>体积</h4><div class="appmiu-sheet-grid" id="s-bulk"></div>
+          <h4>排序</h4><div class="appmiu-sheet-grid" id="s-sort"></div>
+          <h4>视图</h4><div class="appmiu-sheet-grid" id="s-view"></div>
+          <div class="appmiu-sheet-acts">
+            <button type="button" class="appmiu-filter-reset" id="s-reset">清空条件</button>
+            <button type="button" class="appmiu-sheet-done" id="s-done">看结果</button>
+          </div>
+        </div>
       </aside>
 
       <section class="appmiu-results">
         <div class="appmiu-results-summary">
           <strong id="count">显示 725 / 725 本</strong>
+          <div class="appmiu-bar-btns">
+            <button type="button" class="appmiu-bar-btn" id="btn-cat"><span>全部分类</span><i>▾</i></button>
+            <button type="button" class="appmiu-bar-btn" id="btn-filter"><span>筛选</span><i>▾</i></button>
+          </div>
           <div class="appmiu-view-controls" role="group" aria-label="视图切换">
             <button type="button" data-view="list" aria-pressed="false">列表</button>
             <button type="button" data-view="grid" aria-pressed="true">卡片</button>
@@ -283,6 +349,8 @@ scrollbar-width:none;-webkit-overflow-scrolling:touch}
     </div>
   </main>
 
+  <div class="appmiu-panel-scrim" id="scrim"></div>
+
   <footer class="appmiu-foot">
     <p>共 <b id="foot-total">725</b> 本摄影书 · 19 个分类 · 18.9 GB，其中 <b>724</b> 条链接有效可分享。<span id="stamp"></span></p>
     <p>提取码已内嵌在链接里（<code>?pwd=xxxx</code>），点「查看书籍」即为下载页；若提示已失效，说明被百度和谐，可留言求补档。</p>
@@ -301,7 +369,9 @@ const st={q:"",cat:"",fmt:"",pack:"",bulk:"",sort:"no",
 
 const el={};
 ["q","sort","chips","grid","empty","count","f-fmt","f-pack","f-bulk","lede","reset",
- "empty-reset","foot-total","quick","heat","heat-fmt","legend","theme","active-cat","stamp"]
+ "empty-reset","foot-total","quick","heat","heat-fmt","legend","theme","active-cat","stamp",
+ "panel","scrim","btn-cat","btn-filter","s-cat","s-fmt","s-pack","s-bulk","s-sort","s-view",
+ "s-reset","s-done"]
  .forEach(id=>{el[id]=document.getElementById(id)});
 el.views=[...document.querySelectorAll(".appmiu-view-controls button")];
 
@@ -391,6 +461,43 @@ function fillSelect(node,stateKey,fnKey,allLabel,values){
   st[stateKey]=node.value;
 }
 
+/* ---------- 手机端吸顶入口 + 底部弹层 ---------- */
+const VIEWS={list:"列表",grid:"卡片",two:"双列"};
+const isOpen=()=>document.body.classList.contains("panel-open");
+function setPanel(on){
+  document.body.classList.toggle("panel-open",!!on);
+  el["btn-filter"].setAttribute("aria-pressed",String(!!on));
+}
+function grp(node,items,cur,choose){
+  node.innerHTML="";
+  items.forEach(it=>{
+    const b=document.createElement("button");
+    b.type="button";b.setAttribute("aria-pressed",String(it[0]===cur));
+    b.innerHTML=`<span>${esc(it[1])}</span>${it[2]?"<b>"+it[2]+"</b>":""}`;
+    b.onclick=()=>choose(it[0]);
+    node.appendChild(b);
+  });
+}
+function renderSheet(){
+  grp(el["s-cat"],[["","全部分类",N],...CATS.map(c=>[c,c,D.filter(d=>d.c===c).length])],st.cat,
+      v=>{st.cat=v;st.fmt=st.pack=st.bulk="";setPanel(false);sync()});
+  grp(el["s-fmt"],[["","不限",N],...uniq("fmtOf").sort((a,b)=>countIn("fmtOf",b)-countIn("fmtOf",a)).map(f=>[f,f,countIn("fmtOf",f)])],st.fmt,
+      v=>{st.fmt=v;sync()});
+  grp(el["s-pack"],[["","不限",N],["单本","单本",countIn("packOf","单本")],["多册成套","多册成套",countIn("packOf","多册成套")]],st.pack,
+      v=>{st.pack=v;sync()});
+  grp(el["s-bulk"],[["","不限",N],...["100MB 以上","20-100MB","20MB 以下"].map(x=>[x,x,countIn("bulkOf",x)])],st.bulk,
+      v=>{st.bulk=v;sync()});
+  grp(el["s-sort"],[["no","分类顺序"],["cat","书目数"],["size","体积大→小"],["name","按书名"]],st.sort,
+      v=>{st.sort=v;sync()});
+  grp(el["s-view"],Object.keys(VIEWS).map(k=>[k,VIEWS[k]]),st.view,v=>{
+    st.view=v;try{localStorage.setItem("pb-view",v)}catch(e){}sync()});
+}
+el["btn-cat"].onclick=()=>setPanel(!isOpen());
+el["btn-filter"].onclick=()=>setPanel(!isOpen());
+el.scrim.onclick=()=>setPanel(false);
+el["s-done"].onclick=()=>setPanel(false);
+el["s-reset"].onclick=()=>{reset();};
+
 /* ---------- card ---------- */
 function card(d){
   const c=CS[d.c]||["#3a4a55","#5c7182",""];
@@ -405,18 +512,18 @@ function card(d){
     `${d.ok?`<a class="appmiu-card__media" style="--c1:${c[0]};--c2:${c[1]}" href="${url}" target="_blank" rel="noopener nofollow">`
       :`<div class="appmiu-card__media" style="--c1:${c[0]};--c2:${c[1]}">`}${img}
     <span class="t">${esc(short(d.t))}</span>
-    <span class="g">${esc(d.n>1?"全 "+d.n+" 册":fmtOf(d))}</span>
+    <span class="g">${esc(d.n>1?"全"+d.n+"册":fmtOf(d))}</span>
     ${d.ok?"</a>":"</div>"}
     <div class="appmiu-card__body">
       <h3>${d.ok?`<a href="${url}" target="_blank" rel="noopener nofollow">`:""}${esc(d.t)}${d.ok?"</a>":""}</h3>
       <p>${esc(c[2]||d.c)}</p>
       <div class="appmiu-card__meta">
         <span class="appmiu-card__category">${esc(d.c)}</span>
-        <span class="appmiu-card__category">${esc(fmtOf(d))}</span>
+        <span class="appmiu-card__category tag-fmt">${esc(fmtOf(d))}</span>
         <span class="appmiu-card__category">${d.mb} MB</span>
         ${d.n>1?`<span class="appmiu-card__category">全 ${d.n} 册</span>`:""}
-        ${d.v?`<span class="appmiu-card__category">${esc(d.v)}</span>`:""}
-        <span>编号 ${String(d.no).padStart(4,"0")}</span>
+        ${d.v?`<span class="appmiu-card__category tag-ver">${esc(d.v)}</span>`:""}
+        <span class="tag-no">编号 ${String(d.no).padStart(4,"0")}</span>
       </div>
       <div class="appmiu-card__footer">${btn}</div>
     </div>`;
@@ -469,6 +576,12 @@ function render(){
   el.lede.textContent=`${N} 本摄影书 · ${CATS.length} 个分类方向 · 共 ${TOTAL_GB} GB，全部为本人百度网盘直出链接`
     +(s?`｜${s[2]}`:"｜按学习路径排序：基础 → 器材 → 用光构图 → 题材 → 后期 → 教材与大师鉴赏");
   el.views.forEach(b=>b.setAttribute("aria-pressed",String(b.getAttribute("data-view")===st.view)));
+  const n=["cat","fmt","pack","bulk"].filter(k=>st[k]).length;
+  el["btn-cat"].querySelector("span").textContent=st.cat||"全部分类";
+  el["btn-cat"].classList.toggle("on",!!st.cat);
+  el["btn-filter"].querySelector("span").textContent="筛选"+(n?" · "+n+" 项":"")+" · "+VIEWS[st.view];
+  el["btn-filter"].classList.toggle("on",n>0);
+  el["s-done"].textContent="看结果 · "+list.length+" 本";
 }
 
 function sync(){
@@ -477,7 +590,7 @@ function sync(){
   fillSelect(el["f-pack"],"pack","packOf","不限",["单本","多册成套"]);
   fillSelect(el["f-bulk"],"bulk","bulkOf","不限大小",["100MB 以上","20-100MB","20MB 以下"]);
   el.q.value=st.q;el.sort.value=st.sort;
-  writeHash();renderSide();render();
+  writeHash();renderSide();renderSheet();render();
 }
 
 el.q.oninput=()=>{st.q=el.q.value;writeHash();render()};
