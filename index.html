@@ -191,7 +191,6 @@ html.appmiu-dark .appmiu-sheet-grid button[aria-pressed="true"]{color:#101522}
 .appmiu-sheet-done{min-height:46px;border:0;border-radius:10px;background:var(--appmiu-accent);color:#fff;
 font-size:14px;font-weight:700;cursor:pointer}
 .appmiu-panel-scrim{display:none}
-body.panel-open .appmiu-panel-scrim{display:block;position:fixed;inset:0;z-index:25;background:rgba(10,16,26,.42)}
 @media(max-width:1180px){
 .appmiu-discovery__layout{grid-template-columns:220px minmax(0,1fr)}
 .appmiu-discover-more{display:none}
@@ -215,6 +214,7 @@ color:var(--appmiu-ink);font-size:14px;cursor:pointer}
 .appmiu-bar-btn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .appmiu-bar-btn i{font-style:normal;font-size:11px;opacity:.6;flex:none}
 .appmiu-bar-btn.hot[aria-pressed="true"],.appmiu-bar-btn.on{background:var(--appmiu-pressed);color:#fff;border-color:var(--appmiu-pressed)}
+body.panel-open .appmiu-panel-scrim{display:block;position:fixed;inset:0;z-index:25;background:rgba(10,16,26,.42)}
 .appmiu-filter-panel{position:static;display:none}
 body.panel-open .appmiu-filter-panel{display:flex;flex-direction:column;height:78vh;overflow:hidden;
 position:fixed;top:auto;left:10px;right:10px;bottom:0;z-index:30;
@@ -282,6 +282,7 @@ min-height:46px;padding:12px 14px}
   <div class="appmiu-search-terms" id="quick" aria-label="快捷筛选"></div>
 
   <main class="appmiu-discovery">
+    <div class="appmiu-panel-scrim" id="scrim"></div>
     <div class="appmiu-discovery__layout">
 
       <aside class="appmiu-filter-panel" id="panel">
@@ -348,8 +349,6 @@ min-height:46px;padding:12px 14px}
 
     </div>
   </main>
-
-  <div class="appmiu-panel-scrim" id="scrim"></div>
 
   <footer class="appmiu-foot">
     <p>共 <b id="foot-total">725</b> 本摄影书 · 19 个分类 · 18.9 GB，其中 <b>724</b> 条链接有效可分享。<span id="stamp"></span></p>
